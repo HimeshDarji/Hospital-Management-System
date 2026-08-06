@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const api = axios.create({ baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1', withCredentials: true })
+const api = axios.create({ baseURL: import.meta.env.VITE_API_URL || 'https://hospital-management-system-yhr3.onrender.com/api/v1', withCredentials: true })
 let accessToken = null
 let refreshRequest = null
 const authEndpoints = ['/auth/login', '/auth/register', '/auth/refresh', '/auth/forgot-password', '/auth/reset-password']
