@@ -1,0 +1,3 @@
+const User = require('../models/User');
+const list = async (req, res, next) => { try { const page = Math.max(Number(req.query.page) || 1, 1); const limit = Math.min(Number(req.query.limit) || 10, 100); const search = req.query.search ? { $or: ['name', 'email', 'phone'].map((key) => ({ [key]: new RegExp(req.query.search, 'i') })) } : {}; const filter = { role: { $in: ['doctor', 'receptionist'] }, ...search }; const [data, total] = await Promise.all([User.find(filter).select('-password -refreshTokens').skip((page - 1) * limit).limit(limit).sort('-createdAt'), User.countDocuments(filter)]); res.json({ success: true, data, pagination: { page, limit, total, pages: Math.ceil(total / limit) } }); } catch (error) { next(error); } };
+module.exports = { list };

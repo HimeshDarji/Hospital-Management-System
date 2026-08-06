@@ -1,0 +1,7 @@
+import { motion } from 'framer-motion'
+import { FiArrowUpRight, FiStar } from 'react-icons/fi'
+
+const reviews = [
+  ['“MediSphere has made our daily coordination feel effortless. Every team finally has the context they need.”', 'Dr. Amelia Reed', 'Chief Medical Officer', 'AR'], ['“The patient flow is so much clearer now. It gives us more time to offer the kind of welcome people remember.”', 'Nora Patel', 'Reception Lead', 'NP'], ['“It is intuitive, calm and genuinely useful. I can access my care information without any friction.”', 'Ethan Wilson', 'Patient', 'EW']]
+function Testimonials() { return <section className="section testimonial-section" id="testimonials"><div className="shell"><div className="testimonial-top"><div><p className="section-kicker">VOICES OF CARE</p><h2>Loved by the people who make care happen.</h2></div><a className="round-button" href="#contact" aria-label="Contact MediSphere"><FiArrowUpRight /></a></div><div className="review-grid">{reviews.map(([quote, name, role, initials], index) => <motion.article className="review-card" key={name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} whileHover={{ y: -6 }}><div className="stars">{Array.from({ length: 5 }, (_, i) => <FiStar key={i} />)}</div><blockquote>{quote}</blockquote><div className="reviewer"><span>{initials}</span><div><strong>{name}</strong><small>{role}</small></div></div></motion.article>)}</div></div></section> }
+export default Testimonials

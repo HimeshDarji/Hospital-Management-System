@@ -1,0 +1,2 @@
+const Appointment = require('../models/Appointment'); const { createResourceController } = require('../utils/resourceController');
+module.exports = createResourceController(Appointment, { searchFields: ['appointmentNumber', 'reason'], populate: 'patient doctor department', defaultSort: 'scheduledAt', beforeCreate: (body) => ({ ...body, appointmentNumber: body.appointmentNumber || `APT-${Date.now()}` }) });

@@ -1,0 +1,1 @@
+const router = require('express').Router(); const { getDashboard } = require('../controllers/dashboardController'); const { authenticate } = require('../middleware/authMiddleware'); const { authorize } = require('../middleware/roleMiddleware'); router.get('/', authenticate, authorize('admin'), getDashboard); module.exports = router;

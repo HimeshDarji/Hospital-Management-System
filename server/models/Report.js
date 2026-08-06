@@ -1,0 +1,2 @@
+const mongoose = require('mongoose');
+module.exports = mongoose.model('Report', new mongoose.Schema({ title: { type: String, required: true }, type: { type: String, enum: ['revenue', 'appointment', 'patient', 'doctor'], required: true }, period: { type: String, required: true }, generatedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, fileUrl: String, summary: mongoose.Schema.Types.Mixed }, { timestamps: true }));

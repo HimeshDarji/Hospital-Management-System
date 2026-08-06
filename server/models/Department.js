@@ -1,0 +1,2 @@
+const mongoose = require('mongoose');
+module.exports = mongoose.model('Department', new mongoose.Schema({ name: { type: String, required: true, unique: true, trim: true }, code: { type: String, required: true, unique: true, uppercase: true, trim: true }, description: { type: String, trim: true }, headDoctor: { type: mongoose.Schema.Types.ObjectId, ref: 'Doctor', default: null }, status: { type: String, enum: ['active', 'inactive'], default: 'active' } }, { timestamps: true }));

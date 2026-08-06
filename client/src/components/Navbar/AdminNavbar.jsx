@@ -1,0 +1,4 @@
+import { FiBell, FiChevronDown, FiMail, FiMenu, FiMoon, FiSearch, FiSun } from 'react-icons/fi'
+import useAuth from '../../hooks/useAuth'
+function AdminNavbar({ dark, setDark }) { const { user } = useAuth(); return <header className="admin-navbar"><button className="mobile-menu"><FiMenu /></button><div className="admin-search"><FiSearch /><input placeholder="Search patients, doctors, appointments..." /></div><div className="admin-nav-actions"><button aria-label="Messages"><FiMail /></button><button aria-label="Notifications" className="bell"><FiBell /><i /></button><button aria-label="Toggle theme" onClick={() => setDark(!dark)}>{dark ? <FiSun /> : <FiMoon />}</button><div className="admin-profile"><span>{user?.name?.split(' ').map((v) => v[0]).join('').slice(0,2) || 'AD'}</span><div><b>{user?.name || 'Administrator'}</b><small>System Admin</small></div><FiChevronDown /></div></div></header> }
+export default AdminNavbar
