@@ -19,7 +19,7 @@ const register = async (req, res, next) => {
     const user = await User.create({ ...req.body, profileImage: req.file ? `/uploads/profiles/${req.file.filename}` : null });
     const verificationToken = user.createToken('verificationToken', 'verificationTokenExpires', 24 * 60 * 60 * 1000);
     await user.save({ validateBeforeSave: false });
-    await sendVerificationEmail(user, verificationToken);
+    // await sendVerificationEmail(user, verificationToken);
     return respondWithAuth(user, res, 201);
   } catch (error) { return next(error); }
 };
